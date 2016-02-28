@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="CSR" Class="DataClassesCSRDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ServerName;Initial Catalog=DatabaseName;Persist Security Info=True;User ID=UserName" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="CSRConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.spPROCESS_TRANSACTION" Method="spPROCESS_TRANSACTION">
+    <Parameter Name="request_mode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="request_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="status_symbol" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="category_symbol" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="issue_symbol" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="profile_index" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(8000)" />
+    <Parameter Name="service_address" Type="System.String" DbType="VarChar(8000)" />
+    <Parameter Name="request" Type="System.String" DbType="Text" />
+    <Parameter Name="resolution" Type="System.String" DbType="Text" />
+    <Parameter Name="GWP_Account_Number" Parameter="gWP_Account_Number" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="GWP_Issue" Parameter="gWP_Issue" Type="System.String" DbType="VarChar(8000)" />
+    <Parameter Name="location_address" Type="System.String" DbType="VarChar(8000)" />
+    <Parameter Name="description" Type="System.String" DbType="Text" />
+    <Parameter Name="date_needed_by" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="submitted_by_ip_address" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="submitted_by_IsContactAllowed" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="submitted_by_request_script_name" Type="System.String" DbType="VarChar(8000)" />
+    <Parameter Name="submitted_by_full_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="submitted_by_email_address" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="submitted_by_phone" Type="System.String" DbType="VarChar(120)" />
+    <Parameter Name="comments" Type="System.String" DbType="Text" />
+    <Parameter Name="code_id" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="intOUPUT_RequestID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="intOUTPUT_TransactionID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="IsEnrollmentRequest" Parameter="isEnrollmentRequest" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

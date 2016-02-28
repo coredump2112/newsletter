@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NewsletterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NewsletterModelStoreContainer">
+          <EntitySet Name="Campaign" EntityType="NewsletterModel.Store.Campaign" store:Type="Tables" Schema="newsletter" />
+          <EntitySet Name="CampaignProperties" EntityType="NewsletterModel.Store.CampaignProperties" store:Type="Tables" Schema="newsletter" />
+          <EntitySet Name="Vendor" EntityType="NewsletterModel.Store.Vendor" store:Type="Tables" Schema="newsletter" />
+          <EntitySet Name="VendorProperties" EntityType="NewsletterModel.Store.VendorProperties" store:Type="Tables" Schema="newsletter" />
+          <AssociationSet Name="FK_Campaign_Vendor" Association="NewsletterModel.Store.FK_Campaign_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Campaign" EntitySet="Campaign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignProperties_Campaign" Association="NewsletterModel.Store.FK_CampaignProperties_Campaign">
+            <End Role="Campaign" EntitySet="Campaign" />
+            <End Role="CampaignProperties" EntitySet="CampaignProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorProperties_Vendor" Association="NewsletterModel.Store.FK_VendorProperties_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="VendorProperties" EntitySet="VendorProperties" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="CampaignID" />
+          </Key>
+          <Property Name="CampaignID" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="VendorID" Type="smallint" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampaignProperties">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CampaignID" Type="smallint" Nullable="false" />
+          <Property Name="PropertyName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="PropertyValue" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="smallint" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VendorProperties">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorID" Type="smallint" Nullable="false" />
+          <Property Name="PropertyName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="PropertyValue" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateModified" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Campaign_Vendor">
+          <End Role="Vendor" Type="NewsletterModel.Store.Vendor" Multiplicity="1" />
+          <End Role="Campaign" Type="NewsletterModel.Store.Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="Campaign">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignProperties_Campaign">
+          <End Role="Campaign" Type="NewsletterModel.Store.Campaign" Multiplicity="1" />
+          <End Role="CampaignProperties" Type="NewsletterModel.Store.CampaignProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignID" />
+            </Principal>
+            <Dependent Role="CampaignProperties">
+              <PropertyRef Name="CampaignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorProperties_Vendor">
+          <End Role="Vendor" Type="NewsletterModel.Store.Vendor" Multiplicity="1" />
+          <End Role="VendorProperties" Type="NewsletterModel.Store.VendorProperties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="VendorProperties">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DataStore" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NewsletterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Campaigns" EntityType="DataStore.Campaign" />
+          <EntitySet Name="CampaignProperties" EntityType="DataStore.CampaignProperty" />
+          <EntitySet Name="Vendors" EntityType="DataStore.Vendor" />
+          <EntitySet Name="VendorProperties" EntityType="DataStore.VendorProperty" />
+          <AssociationSet Name="FK_Campaign_Vendor" Association="DataStore.FK_Campaign_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="Campaign" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CampaignProperties_Campaign" Association="DataStore.FK_CampaignProperties_Campaign">
+            <End Role="Campaign" EntitySet="Campaigns" />
+            <End Role="CampaignProperties" EntitySet="CampaignProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorProperties_Vendor" Association="DataStore.FK_VendorProperties_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="VendorProperties" EntitySet="VendorProperties" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="CampaignID" />
+          </Key>
+          <Property Name="CampaignID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VendorID" Type="Int16" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Vendor" Relationship="DataStore.FK_Campaign_Vendor" FromRole="Campaign" ToRole="Vendor" />
+          <NavigationProperty Name="CampaignProperties" Relationship="DataStore.FK_CampaignProperties_Campaign" FromRole="Campaign" ToRole="CampaignProperties" />
+          <Property Type="Boolean" Name="isActive" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampaignProperty">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CampaignID" Type="Int16" Nullable="false" />
+          <Property Name="PropertyName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PropertyValue" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Campaign" Relationship="DataStore.FK_CampaignProperties_Campaign" FromRole="CampaignProperties" ToRole="Campaign" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Campaigns" Relationship="DataStore.FK_Campaign_Vendor" FromRole="Vendor" ToRole="Campaign" />
+          <NavigationProperty Name="VendorProperties" Relationship="DataStore.FK_VendorProperties_Vendor" FromRole="Vendor" ToRole="VendorProperties" />
+        </EntityType>
+        <EntityType Name="VendorProperty">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorID" Type="Int16" Nullable="false" />
+          <Property Name="PropertyName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PropertyValue" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateModified" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Vendor" Relationship="DataStore.FK_VendorProperties_Vendor" FromRole="VendorProperties" ToRole="Vendor" />
+        </EntityType>
+        <Association Name="FK_Campaign_Vendor">
+          <End Role="Vendor" Type="DataStore.Vendor" Multiplicity="1" />
+          <End Role="Campaign" Type="DataStore.Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="Campaign">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CampaignProperties_Campaign">
+          <End Role="Campaign" Type="DataStore.Campaign" Multiplicity="1" />
+          <End Role="CampaignProperties" Type="DataStore.CampaignProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaign">
+              <PropertyRef Name="CampaignID" />
+            </Principal>
+            <Dependent Role="CampaignProperties">
+              <PropertyRef Name="CampaignID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorProperties_Vendor">
+          <End Role="Vendor" Type="DataStore.Vendor" Multiplicity="1" />
+          <End Role="VendorProperties" Type="DataStore.VendorProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorID" />
+            </Principal>
+            <Dependent Role="VendorProperties">
+              <PropertyRef Name="VendorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NewsletterModelStoreContainer" CdmEntityContainer="NewsletterEntities">
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="DataStore.Campaign">
+              <MappingFragment StoreEntitySet="Campaign">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CampaignProperties">
+            <EntityTypeMapping TypeName="DataStore.CampaignProperty">
+              <MappingFragment StoreEntitySet="CampaignProperties">
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="CampaignID" ColumnName="CampaignID" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="DataStore.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorProperties">
+            <EntityTypeMapping TypeName="DataStore.VendorProperty">
+              <MappingFragment StoreEntitySet="VendorProperties">
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="NewsletterModel">
+        <EntityTypeShape EntityType="DataStore.Campaign" Width="1.5" PointX="3" PointY="1.125" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataStore.CampaignProperty" Width="2.125" PointX="5.25" PointY="1.125" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataStore.Vendor" Width="1.5" PointX="0.75" PointY="2.75" Height="2.172587890625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataStore.VendorProperty" Width="1.5" PointX="3" PointY="4.25" Height="2.3648893229166656" IsExpanded="true" />
+        <AssociationConnector Association="DataStore.FK_Campaign_Vendor" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.1199446614583328" />
+          <ConnectorPoint PointX="3" PointY="3.1199446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataStore.FK_CampaignProperties_Campaign" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.3074446614583328" />
+          <ConnectorPoint PointX="5.25" PointY="2.3074446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataStore.FK_VendorProperties_Vendor" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.5862939453125" />
+          <ConnectorPoint PointX="3" PointY="4.5862939453125" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
