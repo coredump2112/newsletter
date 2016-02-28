@@ -1,1 +1,2 @@
 # newsletter
+This newsletter form allows vistors to subscribe to various city newsletters. Once the visitor submits request, the backend code subscribes to each selected newsletter subscription list on visitor's behalf. The backend code uses a factory pattern since the city has multiple vendors. Inclusion of new vendor only requires coding of a single class. That class inherits the factory pattern framework. This form is currently used at  http://www.glendaleca.gov/how-do-i-/sign-up-for-/newsletters-and-email-updates.
