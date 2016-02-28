@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="VisionInternet.master.cs" Inherits="frameviews_VisionInternet" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <link href="http://www.glendaleca.gov/DefaultContent/Default/StyleBundleDesignTheme.cssbnd?v=GF9lzNKQuAG8YQLis8Jczrylc9Sr-J5RIRRqZ_WL0N41" rel="stylesheet"/>
+    <link href="http://www.glendaleca.gov/Project/Contents/Main/StyleBundleDesignTheme.cssbnd?v=0Bny9C2-6Poz41GDA1SvDnx1nD_IJXjvBX1vtXPy1kY1" rel="stylesheet"/>
+    <link href="http://www.glendaleca.gov/Areas/Admin/Content/StyleBundleFrontendExtra.cssbnd?v=k3gnrR-nIjOpaGmLS6FFPVAdKGv4psxrV5Sks-9Nzug1" rel="stylesheet"/>
+    <link href="http://www.glendaleca.gov/DefaultContent/Default/Print.cssbnd?v=X5x0wgNEz3I9zMP6gQHRJpx8_ayABF_piF6DmChjPEs1" rel="stylesheet" media="print" />
+    <link href="http://www.glendaleca.gov/Project/Contents/Main/Print.cssbnd?v=QDP-UgOTrsjTjvvXasF9X8CVvHB8UuqduImEG4JAULY1" rel="stylesheet" media="print" />
+    <link href="FrameStyle.css" rel="Stylesheet" />
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="VisionInternet" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="content" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

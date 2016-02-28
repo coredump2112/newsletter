@@ -1,0 +1,118 @@
+﻿body
+{
+    color: #3c3c3c;
+    font: 13px/20px Arial,Helvetica,sans-serif !important;
+}
+
+div.form_submit
+{
+    display: block;
+    padding: 0px 0px 10px 0px;
+}
+
+input[type="radio"]
+{
+    border: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-image-slice: inherit;
+    border-image-source: initial;
+    border-image-width: initial;
+    box-sizing: border-box;
+    cursor: auto;
+    display: inline-block;
+    letter-spacing: normal;
+    list-style: none;
+    margin: 3px 3px 0px 5px;
+    padding: initial;
+    text-align: start;
+    text-indent: 0px;
+    text-shadow: none;
+    text-transform: none;
+    vertical-align: top;
+    width: 13px !important;
+    word-spacing: normal;
+    zoom: 1;
+}
+
+input[type="submit"]
+{
+    align-items: flex-start;
+    background: #0e3d76 !important;
+    border: solid 2px #d0d0d0 !important;
+    border-radius: 1px;
+    box-sizing: border-box;
+    color: #fff !important;
+    cursor: pointer;
+    display: inline-block !important;
+    height: auto !important;
+    letter-spacing: normal;
+    line-height: 125% !important;
+    margin: 0;
+    overflow: visible;
+    padding: 2px 10px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-transform: uppercase;
+    vertical-align: top;
+    white-space: pre;
+    word-spacing: normal;
+    zoom: 1;
+}
+
+input[type="submit"]:hover
+{
+    background: none repeat scroll 0 0 #ac1d15 !important;
+    border: solid 2px #ac1d15 !important;
+    color: #ffffff !important;
+}
+
+input[type="text"], select, textarea
+{
+    background: #fff;
+    border: 1px solid #d0d0d0 !important;
+    border-radius: 1px;
+    cursor: auto;
+    display: inline-block;
+    font-size: 90% !important;
+    height: auto;
+    letter-spacing: normal;
+    line-height: 14px !important;
+    margin: 0;
+    max-width: 100%;
+    outline: none;
+    padding: 4px 0 4px 8px;
+    text-align: start;
+    text-indent: 0px;
+    text-shadow: none;
+    text-transform: none;
+    width: 180px;
+    word-spacing: normal;
+    zoom: 1;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus
+{
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+    outline-offset: -2px;
+}
+
+select
+{
+    align-items: center;
+    box-sizing: border-box;
+    cursor: default;
+    list-style: none;
+    max-width: 200px;
+    min-width: 130px;
+    padding: 3px;
+    white-space: pre;
+    width: auto;
+}
+
+textarea 
+{
+    width: 300px;
+}
